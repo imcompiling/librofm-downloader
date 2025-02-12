@@ -73,6 +73,9 @@ class Run : CliktCommand("run") {
   private val libroFmPassword by option("--libro-fm-password", envvar = "LIBRO_FM_PASSWORD")
     .required()
 
+    private val directoryTemplate by option("--directory-template", envvar = "DIRECTORY_TEMPLATE")
+      .default("<author>/<title>")
+
   private val lfdLogger: (String) -> Unit = {
     if (verbose) {
       println(it)
@@ -103,6 +106,7 @@ class Run : CliktCommand("run") {
         verbose: $verbose
         libroFmUsername: $libroFmUsername
         libroFmPassword: ${libroFmPassword.map { "*" }.joinToString("")}
+        directoryTemplate: $directoryTemplate
       """.trimIndent()
     )
 
