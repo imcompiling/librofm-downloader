@@ -29,6 +29,7 @@ import kotlinx.serialization.json.Json
 import java.io.File
 import kotlin.time.Duration.Companion.days
 import kotlin.time.Duration.Companion.hours
+import com.vishnurajeevan.libroabs.Config
 
 fun main(args: Array<String>) {
   NoOpCliktCommand(name = "librofm-abs")
@@ -37,44 +38,12 @@ fun main(args: Array<String>) {
 }
 
 class Run : CliktCommand("run") {
-  private val port by option("--port")
-    .int()
-    .default(8080)
+  val config = ConfigLoaderBuilder.default()
+    .addResourceSource("/config.yaml")
+    .build()
+    .loadConfigOrThrow<Config>()
 
-  private val dataDir by option("--data-dir")
-    .default("/data")
-
-  private val mediaDir by option("--media-dir")
-    .default("/media")
-
-  private val syncInterval by option("--sync-interval", envvar = "SYNC_INTERVAL")
-    .choice("h", "d", "w")
-    .default("d")
-
-  private val dryRun by option("--dry-run", "-n", envvar = "DRY_RUN")
-    .flag(default = false)
-
-  private val renameChapters by option("--rename-chapters", envvar = "RENAME_CHAPTERS")
-    .flag(default = false)
-
-  private val writeTitleTag by option("--write-title-tag", envvar = "WRITE_TITLE_TAG")
-    .flag(default = false)
-
-  private val verbose by option("--verbose", "-v", envvar = "VERBOSE")
-    .flag(default = false)
-
-  // Limits the number of books pulled down to 1
-  private val devMode by option("--dev-mode", "-d", envvar = "DEV_MODE")
-    .flag(default = false)
-
-  private val libroFmUsername by option("--libro-fm-username", envvar = "LIBRO_FM_USERNAME")
-    .required()
-
-  private val libroFmPassword by option("--libro-fm-password", envvar = "LIBRO_FM_PASSWORD")
-    .required()
-
-    private val directoryTemplate by option("--directory-template", envvar = "DIRECTORY_TEMPLATE")
-      .default("<author>/<title>")
+    config.println()
 
   private val lfdLogger: (String) -> Unit = {
     if (verbose) {

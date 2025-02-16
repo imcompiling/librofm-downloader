@@ -1,0 +1,9 @@
+port: 8080
+dataDir: "/data"
+syncInterval: d
+dryRun: false
+renameChapters: false
+writeTitleTag: false
+verbose: false
+devMode: false
+directoryTemplate: "<author>/<title>"
