@@ -1,19 +1,21 @@
 [versions]
 cardiologist = "0.3.1"
 clikt = "5.0.3"
+ffmpeg = "0.8.0"
 jaudiotagger = "3.0.1"
 junit = "4.13.2"
-ksp = "2.1.10-1.0.29"
+ksp = "2.1.10-1.0.31"
 kotlin = "2.1.10"
 kotlinxSerialization = "2.1.10"
-kotlinxIo = "0.6.0"
+kotlinxIo = "0.7.0"
 ktor = "3.0.0"
-ktorfit = "2.2.0"
-logback = "1.5.16"
+ktorfit = "2.4.1"
+logback = "1.5.17"
 
 [libraries]
 cardiologist = { module = "io.github.kevincianfarini.cardiologist:cardiologist", version.ref = "cardiologist" }
 clikt = { module = "com.github.ajalt.clikt:clikt", version.ref = "clikt" }
+ffmpeg = { module = "net.bramp.ffmpeg:ffmpeg", version.ref = "ffmpeg" }
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
 kotlin-test-junit = { module = "org.jetbrains.kotlin:kotlin-test-junit", version.ref = "kotlin" }
 jaudiotagger = { module = "net.jthink:jaudiotagger", version.ref = "jaudiotagger" }

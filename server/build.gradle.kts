@@ -21,6 +21,7 @@ dependencies {
     implementation(libs.clikt)
     implementation(libs.logback)
     implementation(libs.jaudiotagger)
+    implementation(libs.ffmpeg)
     implementation(libs.kotlinx.io)
     implementation(libs.ktor.client.core)
     implementation(libs.ktor.client.cio)
@@ -30,6 +31,6 @@ dependencies {
     implementation(libs.ktor.server.core)
     implementation(libs.ktor.server.netty)
     implementation(libs.ktorfit.lib)
-    testImplementation(libs.ktor.server.tests)
+
     testImplementation(libs.kotlin.test.junit)
 }

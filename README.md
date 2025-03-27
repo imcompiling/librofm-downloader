@@ -6,12 +6,18 @@ The tool is set to recheck the library every day and download new books. Books w
 
 ## Extra Features
 
-enable `RENAME_CHAPTERS` to rename files from `Track - #.mp3` to `### <Book Title> - <Chapter Title>` as provided by libro.fm
+### Rename Chapters
+Enable `RENAME_CHAPTERS` to rename files from `Track - #.mp3` to `### <Book Title> - <Chapter Title>` as provided by libro.fm
+Additionally, if you enable `WRITE_TITLE_TAG`, each track's ID3 `title` field will be set to `### <Chapter Title>` as provided by libro.fm.
 
-enable `WRITE_TITLE_TAG` to update each track's ID3 `title` field to `### <Chapter Title>` as provided by libro.fm.
+### API Server
+After the initial download of your library, the container will run a API server.
+Bind a host port to `8080` to access the services.
 
-bind a host port to `8080` to access the service's `/update` webhook. This allows you to manually force a refresh (ie: when you just purchased a book).
+Endpoints:
+- `/update` allows you to manually force a refresh (ie: when you just purchased a book).
 
+### Docker Compose Example
 ```
 services:
   librofm-downloader:
